@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WD Almahdi - SECURENET</title>
 
-  <!-- Google Font -->
+  <!-- خطوط جوجل -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Font Awesome -->
+  <!-- أيقونات Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- AOS Animation -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
 
   <style>
-    /* Reset */
+    /* أساسي */
     * {
       box-sizing: border-box;
     }
@@ -23,197 +23,218 @@
     body {
       margin: 0;
       font-family: 'Cairo', sans-serif;
-      background: #f9fafb;
-      color: #222;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+      direction: rtl;
+      background-color: #f4f6f9;
+      color: #333;
+      overflow-x: hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header - Hero */
+    /* خلفية الهيدر مع تأثير الصور */
     header#hero {
       position: relative;
       height: 100vh;
+      color: white;
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: #fff;
-      text-align: center;
       background-size: cover;
-      background-position: center center;
+      background-position: center;
+      background-repeat: no-repeat;
       transition: background-image 1s ease-in-out;
-      padding: 0 20px;
-      overflow: hidden;
     }
 
     header#hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 0;
-      pointer-events: none;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
     }
 
     header#hero img {
-      width: 140px;
-      height: 140px;
+      position: relative;
+      width: 130px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      z-index: 1;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      margin-bottom: 15px;
+      z-index: 2;
       border: 3px solid #0d6efd;
-      transition: transform 0.3s ease;
+      box-shadow: 0 0 15px rgba(13,110,253,0.7);
     }
-    header#hero img:hover {
-      transform: scale(1.05);
+
+    header#hero h1, header#hero p {
+      position: relative;
+      z-index: 2;
+      margin: 5px 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
 
     header#hero h1 {
-      font-size: 3rem;
-      margin: 0 0 15px;
+      font-size: 36px;
       font-weight: 700;
-      z-index: 1;
-      text-shadow: 0 0 15px rgba(13,110,253,0.9);
     }
 
     header#hero p {
-      font-size: 1.3rem;
-      font-weight: 500;
-      z-index: 1;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-shadow: 0 0 8px rgba(13,110,253,0.7);
+      font-size: 20px;
+      font-weight: 400;
     }
 
-    /* Sections common style */
+    /* الأقسام */
     section {
-      max-width: 900px;
-      margin: 50px auto;
+      max-width: 960px;
+      margin: 60px auto;
       padding: 0 20px;
     }
 
     section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 25px;
       color: #0d6efd;
-      border-bottom: 3px solid #0d6efd;
-      padding-bottom: 8px;
-      display: inline-block;
+      font-size: 30px;
+      margin-bottom: 30px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    section h2 i {
-      margin-left: 10px;
+    /* قسم عن الموقع */
+    #about p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* قسم خدماتنا بشكل كروت */
+    #services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 25px;
+    }
+
+    .service-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 4px 15px rgba(13, 110, 253, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+    }
+
+    .service-icon {
+      font-size: 48px;
+      color: #0d6efd;
+      margin-bottom: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
       color: #084298;
     }
 
-    section p, section li {
-      font-size: 1.15rem;
-      color: #444;
-    }
-
-    ul {
-      padding: 0;
-      list-style: none;
-    }
-
-    ul li {
-      position: relative;
-      padding-right: 30px;
-      margin-bottom: 15px;
-      font-weight: 600;
-      color: #222;
-    }
-
-    ul li::before {
-      content: "✔";
-      position: absolute;
-      right: 0;
+    .service-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
       color: #0d6efd;
-      font-weight: bold;
-      font-size: 1.3rem;
-      top: 0;
-      line-height: 1;
     }
 
-    /* Contact buttons */
-    .contact a,
-    .social a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 10px 15px 10px 0;
-      padding: 12px 22px;
+    .service-desc {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* قسم التواصل */
+    #contact {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    #contact p {
+      font-size: 20px;
+      margin: 10px 0;
+      color: #0d6efd;
+      font-weight: 600;
+    }
+
+    #contact a {
+      display: inline-block;
+      margin: 12px 15px;
+      padding: 14px 28px;
+      font-size: 18px;
       background-color: #0d6efd;
-      color: #fff;
+      color: white;
+      text-decoration: none;
       border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 3px 8px rgba(13,110,253,0.4);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      direction: ltr;
+      box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    .contact a:hover,
-    .social a:hover {
+    #contact a:hover {
       background-color: #084298;
-      box-shadow: 0 5px 15px rgba(8,66,152,0.6);
+      transform: scale(1.05);
     }
 
-    .contact a i,
-    .social a i {
-      font-size: 1.3rem;
-    }
-
-    /* Social section */
-    section.social {
+    /* قسم التواصل الاجتماعي */
+    #social {
       text-align: center;
+      margin-bottom: 60px;
     }
 
-    /* Footer */
+    #social a {
+      display: inline-block;
+      margin: 10px 20px;
+      padding: 10px 24px;
+      font-size: 18px;
+      background-color: #0d6efd;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 5px 12px rgba(13,110,253,0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #social a:hover {
+      background-color: #084298;
+      transform: scale(1.1);
+    }
+
+    #social i {
+      margin-left: 8px;
+    }
+
+    /* الفوتر */
     footer {
-      text-align: center;
-      padding: 25px 15px;
       background-color: #e9ecef;
-      color: #666;
-      font-weight: 600;
-      font-size: 1rem;
-      border-top: 1px solid #ccc;
-      margin-top: 60px;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
+    /* استجابة للشاشات الصغيرة */
+    @media (max-width: 600px) {
       header#hero h1 {
-        font-size: 2.4rem;
+        font-size: 28px;
       }
       header#hero p {
-        font-size: 1rem;
+        font-size: 18px;
       }
       section h2 {
-        font-size: 2rem;
+        font-size: 24px;
       }
-      ul li {
-        font-size: 1rem;
-      }
-      .contact a,
-      .social a {
-        padding: 10px 16px;
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header#hero h1 {
-        font-size: 1.8rem;
-      }
-      section h2 {
-        font-size: 1.6rem;
+      #contact a, #social a {
+        font-size: 16px;
+        padding: 12px 20px;
       }
     }
   </style>
@@ -221,51 +242,87 @@
 
 <body>
 
-  <!-- رأس الصفحة -->
-  <header id="hero" role="banner" aria-label="رأس الصفحة">
-    <img src="rr.jpeg" alt="شعار WD Almahdi - SECURENET" loading="lazy" />
-    <h1>WD Almahdi - SECURENET</h1>
+  <!-- الهيدر -->
+  <header id="hero">
+    <img src="rr.jpeg" alt="شعار WD Almahdi - SECURENET" />
+    <h1>WD Almahdi - SECURENET - لحلول المراقبة والشبكات</h1>
     <p>خبرة - أمان - احترافية</p>
   </header>
 
   <!-- قسم عن الموقع -->
-  <section id="about" data-aos="fade-up" tabindex="0">
+  <section id="about" data-aos="fade-up">
     <h2><i class="fas fa-circle-info"></i> عن الموقع</h2>
     <p>WD Almahdi - SECURENET هو مشروع متخصص في تركيب أنظمة المراقبة (DVR/NVR)، الشبكات، البرمجة، وحلول الربط الشبكي. نخدم مناطق عطبرة، أبو حمد، الخرطوم.</p>
   </section>
 
   <!-- قسم الخدمات -->
-  <section id="services" data-aos="fade-up" data-aos-delay="100" tabindex="0">
+  <section id="services" data-aos="fade-up" data-aos-delay="100">
     <h2><i class="fas fa-tools"></i> خدماتنا</h2>
-    <ul>
-      <li>تركيب كاميرات مراقبة DVR و NVR</li>
-      <li>تمديد وتكوين شبكات الإنترنت</li>
-      <li>برمجة وربط كاميرات IP</li>
-      <li>ربط الأنظمة عن بعد ومراقبتها بالجوال</li>
-    </ul>
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="150">
+      <i class="fas fa-video service-icon"></i>
+      <div class="service-title">تركيب كاميرات DVR و NVR</div>
+      <div class="service-desc">نقوم بتركيب أنظمة كاميرات مراقبة بجودة عالية مع ضمان التشغيل السلس.</div>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="250">
+      <i class="fas fa-network-wired service-icon"></i>
+      <div class="service-title">تمديد وتكوين شبكات الإنترنت</div>
+      <div class="service-desc">تركيب شبكات إنترنت سريعة ومستقرة تناسب احتياجاتك المنزلية والتجارية.</div>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="350">
+      <i class="fas fa-code service-icon"></i>
+      <div class="service-title">برمجة وربط كاميرات IP</div>
+      <div class="service-desc">برمجة وربط كاميرات IP لمراقبة متقدمة والتحكم عن بعد بكل سهولة.</div>
+    </div>
+    <div class="service-card" data-aos="zoom-in" data-aos-delay="450">
+      <i class="fas fa-mobile-alt service-icon"></i>
+      <div class="service-title">ربط الأنظمة عن بعد ومراقبتها بالجوال</div>
+      <div class="service-desc">نضمن لك التحكم الكامل في أنظمة المراقبة من أي مكان عبر هاتفك الذكي.</div>
+    </div>
   </section>
 
   <!-- قسم التواصل -->
-  <section id="contact" class="contact" data-aos="zoom-in" tabindex="0" aria-label="قسم التواصل">
+  <section id="contact" data-aos="fade-up" data-aos-delay="550">
     <h2><i class="fas fa-phone"></i> تواصل معنا</h2>
     <p>📞 0912345209</p>
     <p>📞 0113214704</p>
-    <a href="tel:0912345209" aria-label="اتصل على 0912345209"><i class="fas fa-phone"></i> اتصل الآن</a>
-    <a href="https://wa.me/249912345209" target="_blank" rel="noopener" aria-label="مراسلة واتساب على 0912345209"><i class="fab fa-whatsapp"></i> واتساب مباشر</a>
+    <a href="tel:0912345209"><i class="fas fa-phone"></i> اتصل الآن</a>
+    <a href="https://wa.me/249912345209" target="_blank"><i class="fab fa-whatsapp"></i> واتساب مباشر</a>
   </section>
 
-  <!-- شبكات التواصل -->
-  <section id="social" class="social" data-aos="fade-up" tabindex="0" aria-label="شبكات التواصل الاجتماعي">
+  <!-- قسم شبكات التواصل -->
+  <section id="social" data-aos="fade-up" data-aos-delay="650">
     <h2><i class="fas fa-share-alt"></i> تابعنا على</h2>
-    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook"></i> فيسبوك</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="إنستغرام"><i class="fab fa-instagram"></i> إنستغرام</a>
-    <a href="https://wa.me/249912345209" target="_blank" rel="noopener" aria-label="واتساب"><i class="fab fa-whatsapp"></i> واتساب</a>
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> فيسبوك</a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> إنستغرام</a>
+    <a href="https://wa.me/249912345209" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
   </section>
 
-  <!-- التذييل -->
-  <footer tabindex="0">
+  <!-- الفوتر -->
+  <footer>
     جميع الحقوق محفوظة ©️ 2025 WD Almahdi - SECURENET
   </footer>
 
-  <!-- AOS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/
+  <!-- مكتبة AOS للأنيميشن -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+
+  <!-- سكريبت تغيير الخلفية -->
+  <script>
+    const hero = document.getElementById('hero');
+    const images = ['r.jpg', 't.jpg', 'y.jpg'];
+    let index = 0;
+
+    function changeBackground() {
+      hero.style.backgroundImage = url('${images[index]}');
+      index = (index + 1) % images.length;
+    }
+
+    changeBackground();
+    setInterval(changeBackground, 6000);
+  </script>
+</body
